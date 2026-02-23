@@ -15,7 +15,7 @@ This portfolio showcases:
 - My interests beyond just writing code
 - A functional contact form
 
-The goal was to build something clean, responsive, and structured — without relying on templates or frameworks.
+The goal was to build something clean, responsive, and structured without relying on templates or frameworks.
 
 ---
 
@@ -71,4 +71,5 @@ Most importantly, it helped me understand that writing clean, organized code is 
 
 © 2026 Suryanshi Singh  
 Designed and developed with intention ✨
+
 
