@@ -56,18 +56,6 @@ Most importantly, it helped me understand that writing clean, organized code is 
 
 ---
 
-## 📂 Project Structure
-
-Suryanshi-Portfolio/
-│
-├── index.html
-├── style.css
-├── thankyou.html
-├── favicon.png
-└── README.md
-
----
-
 ## 🌐 Live Website
 
 [Demo-Link](https://suryanshi-web.github.io/suryanshi-portfolio/)
@@ -83,3 +71,4 @@ Suryanshi-Portfolio/
 
 © 2026 Suryanshi Singh  
 Designed and developed with intention ✨
+
