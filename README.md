@@ -58,7 +58,7 @@ Most importantly, it helped me understand that writing clean, organized code is 
 
 ## 🌐 Live Website
 
-[Demo-Link](https://suryanshi-web.github.io/suryanshi-portfolio/)
+[1st Week Demo-Link](https://suryanshi-web.github.io/suryanshi-portfolio/)
 
 ---
 
@@ -71,6 +71,7 @@ Most importantly, it helped me understand that writing clean, organized code is 
 
 © 2026 Suryanshi Singh  
 Designed and developed with intention ✨
+
 
 
 
