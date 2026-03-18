@@ -1,33 +1,30 @@
 window.onload = function () {
 
-    // Hobby cards
-    var hobbyCards = document.querySelectorAll(".hobby-card");
+ // Single hobby benefits list (Home section)
+    var hobbyList = document.getElementById("hobby-benefits-list");
+    var hobbyInput = document.getElementById("hobbyInput");
+    var addHobbyBtn = document.getElementById("addHobbyBtn");
 
-    hobbyCards.forEach(function (card) {
-
-        var input = card.querySelector("input");
-        var button = card.querySelector("button");
-        var list = card.querySelector(".benefit-list");
-
-        list.querySelectorAll("li").forEach(function (item) {
+    if (hobbyList && addHobbyBtn) {
+        hobbyList.querySelectorAll("li").forEach(function (item) {
             addDeleteButton(item);
         });
 
-        button.onclick = function () {
-
-            var text = input.value.trim();
+        addHobbyBtn.onclick = function () {
+            var text = hobbyInput.value.trim();
             if (text === "") return;
-            if (list.children.length >= 5) return;
 
             var li = document.createElement("li");
-            li.innerText = text;
-
+            var textSpan = document.createElement("span");
+            textSpan.className = "item-text";
+            textSpan.textContent = text;
+            li.appendChild(textSpan);
             addDeleteButton(li);
-            list.appendChild(li);
+            hobbyList.appendChild(li);
 
-            input.value = "";
+            hobbyInput.value = "";
         };
-    });
+    }
 
     // Contact form (EmailJS)
     var form = document.getElementById("contactForm");
@@ -48,7 +45,7 @@ window.onload = function () {
 
             emailjs.send("service_p0920sn", "template_3l1cb5i", params)
                 .then(function () {
-
+                    alert("Thank you! Your message has been sent successfully.");
                     messageBox.innerText = "Message sent successfully!";
                     messageBox.style.color = "green";
 
@@ -68,23 +65,22 @@ window.onload = function () {
 
     // Date & time
     function updateDateTime() {
-
-        var now = new Date();
-
-        var options = {
-            weekday: "long",
-            day: "2-digit",
-            month: "long",
-            year: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit"
-        };
-
-        var element = document.getElementById("dateTime");
-        if (element) {
-            element.innerText = now.toLocaleString("en-IN", options);
-        }
+      var now = new Date();
+      var options = {
+          weekday: "long",
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false
+      };
+      
+      var element = document.getElementById("dateTime");
+      if (element) {
+          element.innerText = now.toLocaleString("en-GB", options).replace(" at", ",");
+      }
     }
 
     updateDateTime();
@@ -108,10 +104,18 @@ window.onload = function () {
 };
 
 function addDeleteButton(li) {
+    if (!li.querySelector('span.item-text')) {
+        var textSpan = document.createElement('span');
+        textSpan.className = 'item-text';
+        textSpan.textContent = li.childNodes[0].textContent;
+        li.childNodes[0].replaceWith(textSpan);
+    }
 
-    var deleteBtn = document.createElement("span");
+    var deleteBtn = document.createElement("button");
     deleteBtn.innerHTML = "✕";
     deleteBtn.className = "delete-btn";
+    deleteBtn.setAttribute("aria-label", "Delete benefit: " + li.querySelector('.item-text').textContent.trim());
+    deleteBtn.setAttribute("type", "button");
 
     deleteBtn.onclick = function () {
         li.remove();
@@ -119,3 +123,4 @@ function addDeleteButton(li) {
 
     li.appendChild(deleteBtn);
 }
+
